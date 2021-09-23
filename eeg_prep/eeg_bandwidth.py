@@ -24,7 +24,7 @@ fn = fs / 2
 t = []
 for i in range(0,len(eeg)):
     t.append(i * (1/fs))
-
+print(np.shape(eeg))
 Y = scipy.fft.fft(eeg)
 L = np.size(Y)
 P2 = abs(Y/L)
@@ -60,7 +60,7 @@ plt.title("Theta (4-8Hz)")
 plt.show()
 
 # alpha (8-12Hz)
-b, a = signal.butter(filter_order, [8/fn, 12/fn], btype = 'bandpass')
+b, a = signal.butter(filter_order, [8/fn, 12/fn], btype='bandpass')
 alpha = signal.filtfilt(b, a, eeg)
 
 plt.plot(t, alpha)
